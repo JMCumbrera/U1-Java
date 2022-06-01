@@ -28,17 +28,15 @@ public class Main {
     }
 
     @Contract(pure = true)
-    public static @NotNull String passwordGen(Integer lenght) {
+    public static @NotNull String passwordGen(Integer length) {
         Integer leftLimit = 33;
         Integer rightLimit = 126;
         Random random = new Random();
 
-        String password = random.ints(leftLimit,rightLimit + 1)
-                .limit(lenght)
+        return random.ints(leftLimit,rightLimit + 1)
+                .limit(length)
                 .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
                 .toString();
-
-        return password;
     }
 }
 
